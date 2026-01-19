@@ -1,4 +1,4 @@
-const { createTaskValidation, updateTaskValidation } = require("./task");
+const { createTaskValidation, updateTaskValidation } = require("../modules/task-manager/validations");
 
 module.exports = {
     createTaskValidation,
