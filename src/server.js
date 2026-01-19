@@ -12,6 +12,16 @@ app.get("/", (req, res) => {
     res.send("Hello World!");
 });
 
+// test json-server.service
+const { JsonServerService } = require("./modules/json-server/json-server.service");
+const jsonServerService = new JsonServerService("task-manager");
+app.get("/task-manager", async (req, res) => {
+    const data = await jsonServerService.get();
+    if (data) return res.status(200).json(data);
+    else res.status(500).json({ message: "Internal Server Error" });
+});
+
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 });
