@@ -1,0 +1,29 @@
+{
+  "name": "self-manager",
+  "version": "1.0.0",
+  "description": "an application for management everything from task, money, hobbies, write some stories, .... (custom by me and different other apps )",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CED-b2005/self-manager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/CED-b2005/self-manager/issues"
+  },
+  "homepage": "https://github.com/CED-b2005/self-manager#readme",
+  "dependencies": {
+    "@google/genai": "^1.35.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.11",
+    "router": "^2.2.0"
+  }
+}
