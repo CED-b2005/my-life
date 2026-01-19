@@ -14,32 +14,47 @@ class JsonServerService {
         return response({ sussess, status, data, error });
     }
 
+    /**
+     * @param {string} id 
+     */
     async getById(id) {
         const { sussess, status, data, error } = await apiRequest(API_METHODS.GET, `${this.url}/${id}`);
         return response({ sussess, status, data, error });
     }
 
+    /**
+    * @param {JSON} bodyData 
+    */
     async post(bodyData) {
         const { sussess, status, data, error } = await apiRequest(API_METHODS.POST, this.url, bodyData);
         return response({ sussess, status, data, error });
     }
 
+    /**
+     * @param {string} id
+     * @param {JSON} bodyData 
+    */
     async put(id, bodyData) {
         const { sussess, status, data, error } = await apiRequest(API_METHODS.PUT, `${this.url}/${id}`, bodyData);
         return response({ sussess, status, data, error });
     }
 
+    /**
+     * @param {string} id
+     * @param {JSON} bodyData 
+    */
     async patch(id, bodyData) {
         const { sussess, status, data, error } = await apiRequest(API_METHODS.PATCH, `${this.url}/${id}`, bodyData);
-        return response({ sussess, status, data, error });  
+        return response({ sussess, status, data, error });
     }
 
+    /**
+     * @param {string} id
+    */
     async delete(id) {
         const { sussess, status, data, error } = await apiRequest(API_METHODS.DELETE, `${this.url}/${id}`);
         return response({ sussess, status, data, error });
     }
 }
 
-module.exports = {
-    JsonServerService,
-};
+module.exports = JsonServerService;

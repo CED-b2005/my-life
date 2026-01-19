@@ -12,13 +12,26 @@ app.get("/", (req, res) => {
     res.send("Hello World!");
 });
 
-// test json-server.service
-const { JsonServerService } = require("./modules/json-server/json-server.service");
-const jsonServerService = new JsonServerService("task-manager");
+// test task-manager.service
+const TaskManagerService = require("./modules/task-manager/task-manager.service");
+const taskManagerService = new TaskManagerService();
 app.get("/task-manager", async (req, res) => {
-    const data = await jsonServerService.get();
-    if (data) return res.status(200).json(data);
-    else res.status(500).json({ message: "Internal Server Error" });
+    const { status, data, error } = await taskManagerService.getTasks();
+    if (data) return res.status(status).json(data);
+    else res.status(status).json(error);
+});
+
+// get by id
+app.get("/task-manager/:id", async (req, res) => {
+    const { status, data, error } = await taskManagerService.getTask(req.params.id);
+    if (data) return res.status(status).json(data);
+    else res.status(status).json(error);
+});
+
+app.post("/task-manager", async (req, res) => {
+    const { status, data, error } = await taskManagerService.createTask(req.body);
+    if (data) return res.status(status).json(data);
+    else res.status(status).json(error);
 });
 
 
