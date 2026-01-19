@@ -1,6 +1,5 @@
 const JsonServerService = require("../json-server/json-server.service");
-
-const { CreateTaskDto } = require("./dto");
+const { CreateTaskDto, UpdateTaskDto } = require("./dto");
 
 class TaskManagerService {
     constructor() {
@@ -28,9 +27,11 @@ class TaskManagerService {
 
     /**
      * @param {string} id
-     * @param {JSON} bodyData 
+     * @param {UpdateTaskDto} requestData 
      */
-    async patchTask(id, bodyData) {
+    async updateTask(id, requestData) {
+        const bodyData = new UpdateTaskDto(requestData);
+        // return bodyData;
         return await this.jsonServerService.patch(id, bodyData);
     }
 

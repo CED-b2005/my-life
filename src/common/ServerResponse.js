@@ -25,6 +25,7 @@ function messageRespone(status) {
             return "Internal Server Error";
         case 502:
             return "Bad Gateway";
+            break;
     }
 }
 

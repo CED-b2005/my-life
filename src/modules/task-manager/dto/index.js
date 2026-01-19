@@ -1,5 +1,7 @@
-const { CreateTaskDto } = require("./request")
+const { CreateTaskDto, UpdateTaskDto } = require("./request")
 
 module.exports = {
     CreateTaskDto,
+    UpdateTaskDto,
+
 }
