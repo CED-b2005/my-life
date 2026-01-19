@@ -17,12 +17,15 @@ class TaskManagerService {
         return await this.jsonServerService.getById(id);
     }
 
+    async queries(queries) {
+        return await this.jsonServerService.getByQueries(queries);
+    }
+
     /**
      * @param {CreateTaskDto} requestData 
      */
     async createTask(requestData) {
-        const bodyData = new CreateTaskDto(requestData);
-        return await this.jsonServerService.post(bodyData);
+        return await this.jsonServerService.post(requestData);
     }
 
     /**
@@ -30,9 +33,7 @@ class TaskManagerService {
      * @param {UpdateTaskDto} requestData 
      */
     async updateTask(id, requestData) {
-        const bodyData = new UpdateTaskDto(requestData);
-        // return bodyData;
-        return await this.jsonServerService.patch(id, bodyData);
+        return await this.jsonServerService.patch(id, requestData);
     }
 
     /**

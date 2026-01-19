@@ -32,9 +32,9 @@ async function apiRequest(method, url, bodyData) {
     }
 }
 
-function  apiResponse({ status, data, error }) {
+function apiResponse({ status, data, error }) {
     return {
-        sussess: data !== undefined && data !== null ? true : false,
+        success: error ? false : true,
         status,
         data,
         error,

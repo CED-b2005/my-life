@@ -10,50 +10,57 @@ class JsonServerService {
     }
 
     async get() {
-        const { sussess, status, data, error } = await apiRequest(API_METHODS.GET, this.url);
-        return response({ sussess, status, data, error });
+        const { success, status, data, error } = await apiRequest(API_METHODS.GET, this.url);
+        return response({ success, status, data, error });
     }
 
     /**
      * @param {string} id 
      */
     async getById(id) {
-        const { sussess, status, data, error } = await apiRequest(API_METHODS.GET, `${this.url}/${id}`);
-        return response({ sussess, status, data, error });
+        const { success, status, data, error } = await apiRequest(API_METHODS.GET, `${this.url}/${id}`);
+        return response({ success, status, data, error });
+    }
+
+    async getByQueries(queries) {
+        const queryString = new URLSearchParams(queries).toString();
+        const { success, status, data, error } = await apiRequest(API_METHODS.GET, `${this.url}?${queryString}`);
+        return response({ success, status, data, error });
+
     }
 
     /**
-    * @param {JSON} bodyData 
+    * @param {JSON} requestData 
     */
-    async post(bodyData) {
-        const { sussess, status, data, error } = await apiRequest(API_METHODS.POST, this.url, bodyData);
-        return response({ sussess, status, data, error });
+    async post(requestData) {
+        const { success, status, data, error } = await apiRequest(API_METHODS.POST, this.url, requestData);
+        return response({ success, status, data, error });
     }
 
     /**
      * @param {string} id
-     * @param {JSON} bodyData 
+     * @param {JSON} requestData 
     */
-    async put(id, bodyData) {
-        const { sussess, status, data, error } = await apiRequest(API_METHODS.PUT, `${this.url}/${id}`, bodyData);
-        return response({ sussess, status, data, error });
+    async put(id, requestData) {
+        const { success, status, data, error } = await apiRequest(API_METHODS.PUT, `${this.url}/${id}`, requestData);
+        return response({ success, status, data, error });
     }
 
     /**
      * @param {string} id
-     * @param {JSON} bodyData 
+     * @param {JSON} requestData 
     */
-    async patch(id, bodyData) {
-        const { sussess, status, data, error } = await apiRequest(API_METHODS.PATCH, `${this.url}/${id}`, bodyData);
-        return response({ sussess, status, data, error });
+    async patch(id, requestData) {
+        const { success, status, data, error } = await apiRequest(API_METHODS.PATCH, `${this.url}/${id}`, requestData);
+        return response({ success, status, data, error });
     }
 
     /**
      * @param {string} id
     */
     async delete(id) {
-        const { sussess, status, data, error } = await apiRequest(API_METHODS.DELETE, `${this.url}/${id}`);
-        return response({ sussess, status, data, error });
+        const { success, status, data, error } = await apiRequest(API_METHODS.DELETE, `${this.url}/${id}`);
+        return response({ success, status, data, error });
     }
 }
 
