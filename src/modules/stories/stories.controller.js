@@ -1,6 +1,7 @@
+const { ServerResponse } = require("../../common")
 const StoriesService = require("./stories.service");
 const { CreateStoryDto, UpdateStoryDto } = require("./dto");
-const { ServerResponse } = require("../../common")
+const {promptAi} = require('./helpers')
 
 class StoriesController {
     constructor(storiesService = new StoriesService()) {
@@ -39,7 +40,10 @@ class StoriesController {
 
     aiEvaluateStory = async (req, res) => {
         const { id } = req.params;
-        const response = await this.storiesService.aiEvaluateStory(id);
+        let response = await this.storiesService.getStory(id);
+        if (!response.success) return res.json(new ServerResponse(response));
+        
+        response = await this.storiesService.aiEvaluateStory(promptAi(response.data.contents));  
         return res.json(new ServerResponse(response));
     }
 }

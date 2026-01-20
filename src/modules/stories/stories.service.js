@@ -27,9 +27,8 @@ class StoriesService {
         return await this.jsonServerService.delete(id);
     }
 
-    async aiEvaluateStory(id) {
-        const { data } = await this.jsonServerService.getById(id);
-        return await this.aiService.generate(data.contents);
+    async aiEvaluateStory(storyContent) {
+        return await this.aiService.generate(storyContent);
     }
 }
 

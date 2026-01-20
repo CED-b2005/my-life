@@ -14,7 +14,7 @@ class AiService {
             else return { error, status }
 
         } catch (error) {
-            return error;
+            return { error: error.message, status: 500 };
         }
     }
 }
