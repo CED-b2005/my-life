@@ -1,4 +1,5 @@
 const TaskManagerModule = require("./task-manager.module");
+const { createTaskValidation, updateTaskValidation } = require("./validations");
 const Router = require("router");
 
 const taskManagerModule = new TaskManagerModule();
@@ -16,10 +17,10 @@ taskManagerRouter.get("/tasks/:id", taskManagerController.getTask);
 taskManagerRouter.get("/date", taskManagerController.getTasksByDate);
 
 // create
-taskManagerRouter.post("/tasks", taskManagerController.createTask);
+taskManagerRouter.post("/tasks", createTaskValidation, taskManagerController.createTask);
 
 // update - patch
-taskManagerRouter.patch("/tasks/:id", taskManagerController.updateTask);
+taskManagerRouter.patch("/tasks/:id", updateTaskValidation, taskManagerController.updateTask);
 
 // delete
 taskManagerRouter.delete("/tasks/:id", taskManagerController.deleteTask);
