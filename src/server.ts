@@ -1,6 +1,6 @@
-const express = require("express");
-const cors = require("cors");
-const router = require("./routers");
+import express from "express";
+import cors from "cors";
+
 require("dotenv").config();
 
 const app = express();
@@ -14,10 +14,11 @@ app.get("/", (req, res) => {
 });
 
 // api
-app.use(router);
+// app.use(router);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
+    console.log(`http://127.0.0.1:${port}`);
 });
 
 module.exports = app;

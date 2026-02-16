@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "ts-node-dev --respawn -r tsconfig-paths/register src/server.ts",
     "build": "tsc",
-    "start": "node dist/serv.js",
+    "start": "node src/server.js",
     "json-server": "json-server --watch json-server/database.json --port 8888"
   },
   "repository": {
@@ -26,7 +26,6 @@
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
-    "nodemon": "^3.1.11",
     "router": "^2.2.0",
     "tsconfig-paths": "^4.2.0"
   },
